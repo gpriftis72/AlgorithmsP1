@@ -1,52 +1,52 @@
 import time
 
-def Bubble(ThePinakasAndNumbers):
-    ThePinakasAndNumbers = ThePinakasAndNumbers.copy()
-    n = len(ThePinakasAndNumbers)
+def Bubble(Pinakas):
+    Pinakas = Pinakas.copy()
+    n = len(Pinakas)
     MetrithsSygrisewn = 0
 
     for i in range(n):
         Fouskoma = False
         for j in range(0, n - i - 1):
             MetrithsSygrisewn += 1 
-            if ThePinakasAndNumbers[j] > ThePinakasAndNumbers[j + 1]:
-                ThePinakasAndNumbers[j], ThePinakasAndNumbers[j + 1] = ThePinakasAndNumbers[j + 1], ThePinakasAndNumbers[j]
+            if Pinakas[j] > Pinakas[j + 1]:
+                Pinakas[j], Pinakas[j + 1] = Pinakas[j + 1], Pinakas[j]
                 Fouskoma = True
         if not Fouskoma:
             break
 
-    return ThePinakasAndNumbers, MetrithsSygrisewn
+    return Pinakas, MetrithsSygrisewn
 
-def Insertion(ThePinakasAndNumbers):
-    ThePinakasAndNumbers = ThePinakasAndNumbers.copy()
+def Insertion(Pinakas):
+    Pinakas = Pinakas.copy()
     MetrithsSygrisewn = 0
 
-    for i in range(1, len(ThePinakasAndNumbers)):
-        key = ThePinakasAndNumbers[i]  # key to lene genika sthn python einai kati san to temp sthn C
+    for i in range(1, len(Pinakas)):
+        key = Pinakas[i]  # key to lene genika sthn python einai kati san to temp sthn C
         j = i - 1
         while j >= 0:
             MetrithsSygrisewn += 1            
-            if ThePinakasAndNumbers[j] > key:
-                ThePinakasAndNumbers[j + 1] = ThePinakasAndNumbers[j]
+            if Pinakas[j] > key:
+                Pinakas[j + 1] = Pinakas[j]
                 j -= 1
             else:
                 break
-        ThePinakasAndNumbers[j + 1] = key
+        Pinakas[j + 1] = key
 
-    return ThePinakasAndNumbers, MetrithsSygrisewn
+    return Pinakas, MetrithsSygrisewn
 
-def MergeEpisodeITheSplit(ThePinakasAndNumbers):  
-    ThePinakasAndNumbers = ThePinakasAndNumbers.copy()
+def MergeEpisodeITheSplit(Pinakas):  
+    Pinakas = Pinakas.copy()
     MetrithsSygrisewn = [0]                               
-    SortedPinakas = Helper_A_MergeStory(ThePinakasAndNumbers, MetrithsSygrisewn)
+    SortedPinakas = Helper_A_MergeStory(Pinakas, MetrithsSygrisewn)
     return SortedPinakas, MetrithsSygrisewn[0]
 
-def Helper_A_MergeStory(ThePinakasAndNumbers, MetrithsSygrisewn): #eftiaja mia trith synarthsh giati sthn C1 etsi opws ekana thn Episode 1 ousiastika kalei synexeia ton eayto ths kai midenizei to counter ousiastika kanei oti ekane h prwth prin kai h prwth apla kanei initbton metrith 
-    if len(ThePinakasAndNumbers) <= 1:
-        return ThePinakasAndNumbers
-    mid = len(ThePinakasAndNumbers) // 2
-    left = Helper_A_MergeStory(ThePinakasAndNumbers[:mid], MetrithsSygrisewn)
-    right = Helper_A_MergeStory(ThePinakasAndNumbers[mid:], MetrithsSygrisewn)
+def Helper_A_MergeStory(Pinakas, MetrithsSygrisewn): #eftiaja mia trith synarthsh giati sthn C1 etsi opws ekana thn Episode 1 ousiastika kalei synexeia ton eayto ths kai midenizei to counter ousiastika kanei oti ekane h prwth prin kai h prwth apla kanei initbton metrith 
+    if len(Pinakas) <= 1:
+        return Pinakas
+    mid = len(Pinakas) // 2
+    left = Helper_A_MergeStory(Pinakas[:mid], MetrithsSygrisewn)
+    right = Helper_A_MergeStory(Pinakas[mid:], MetrithsSygrisewn)
     return MergeEpisode2TheMergeStrikesBack(left, right, MetrithsSygrisewn)
 
 def MergeEpisode2TheMergeStrikesBack(left, right, MetrithsSygrisewn):  # Ayto to meros kanei to merge
@@ -64,9 +64,9 @@ def MergeEpisode2TheMergeStrikesBack(left, right, MetrithsSygrisewn):  # Ayto to
     result.extend(right[j:])
     return result
 
-def Roloi(SortFunc, ThePinakasAndNumbers):
+def Roloi(SortFunc, Pinakas):
     start = time.perf_counter()
-    SortedPinakas, MetrithsSygrisewn = SortFunc(ThePinakasAndNumbers)
+    SortedPinakas, MetrithsSygrisewn = SortFunc(Pinakas)
     end = time.perf_counter()
     Chronos = end - start
     return SortedPinakas, MetrithsSygrisewn, Chronos
@@ -75,13 +75,13 @@ if __name__ == "__main__":
 
     print("Dwse arithmous xwrismenous me keno gia na tous kanw Sort:")
     user_input = input("> ")
-    ThePinakasAndNumbers = list(map(int, user_input.split()))
+    Pinakas = list(map(int, user_input.split()))
 
-    print(f"\nO Pinakas pou edwses: {ThePinakasAndNumbers}")
+    print(f"\nO Pinakas pou edwses: {Pinakas}")
 
     for name, func in [("Sort me ton Algorithmo Bubble ",    Bubble),
                        ("Sort me Insertion", Insertion),
                        ("Sort me Merge",     MergeEpisodeITheSplit)]:
-        SortedPinakas, MetrithsSygrisewn, Chronos = Roloi(func, ThePinakasAndNumbers)
+        SortedPinakas, MetrithsSygrisewn, Chronos = Roloi(func, Pinakas)
         print(f"{name:<20} {str(SortedPinakas):<25} {MetrithsSygrisewn:<15} Xronos Ektelesis: {Chronos:.6f}") #to evala .6f giati synithos kinitai se ayta ta epipeda , pio poluy kai tha eixe parapanw leptomeria , axreiasth
         
