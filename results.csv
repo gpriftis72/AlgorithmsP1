@@ -1,0 +1,106 @@
+Algorithm,Input Type,n,Avg Time (s),Avg Comparisons
+Bublle Short,Tajinomimenh,100,0.000004,99
+Bublle Short,Tajinomimenh,500,0.000021,499
+Bublle Short,Tajinomimenh,1000,0.000045,999
+Bublle Short,Tajinomimenh,2000,0.000092,1999
+Bublle Short,Tajinomimenh,5000,0.000234,4999
+Bublle Short,Anapodh,100,0.000367,4950
+Bublle Short,Anapodh,500,0.009528,124750
+Bublle Short,Anapodh,1000,0.040762,499500
+Bublle Short,Anapodh,2000,0.168386,1999000
+Bublle Short,Anapodh,5000,1.088106,12497500
+Bublle Short,Tyxaia,100,0.000291,4887
+Bublle Short,Tyxaia,500,0.007612,124408
+Bublle Short,Tyxaia,1000,0.031630,499082
+Bublle Short,Tyxaia,2000,0.134543,1996300
+Bublle Short,Tyxaia,5000,0.862071,12490905
+Bublle Short,Ligotera Decents,100,0.000021,579
+Bublle Short,Ligotera Decents,500,0.000509,12649
+Bublle Short,Ligotera Decents,1000,0.002122,49674
+Bublle Short,Ligotera Decents,2000,0.008605,196849
+Bublle Short,Ligotera Decents,5000,0.053612,1223374
+Bublle Short,Perissotera Decents,100,0.000386,4940
+Bublle Short,Perissotera Decents,500,0.009504,124450
+Bublle Short,Perissotera Decents,1000,0.038818,498275
+Bublle Short,Perissotera Decents,2000,0.165339,1994050
+Bublle Short,Perissotera Decents,5000,1.055489,12466375
+Bublle Short,Ligotera Inversions,100,0.000024,390
+Bublle Short,Ligotera Inversions,500,0.000535,6895
+Bublle Short,Ligotera Inversions,1000,0.002232,26622
+Bublle Short,Ligotera Inversions,2000,0.008818,102622
+Bublle Short,Ligotera Inversions,5000,0.056672,631744
+Bublle Short,Perissotera Inversions,100,0.000363,4740
+Bublle Short,Perissotera Inversions,500,0.009313,118645
+Bublle Short,Perissotera Inversions,1000,0.040086,474969
+Bublle Short,Perissotera Inversions,2000,0.164969,1899765
+Bublle Short,Perissotera Inversions,5000,1.058275,11874214
+Insertion Short,Tajinomimenh,100,0.000006,99
+Insertion Short,Tajinomimenh,500,0.000033,499
+Insertion Short,Tajinomimenh,1000,0.000066,999
+Insertion Short,Tajinomimenh,2000,0.000140,1999
+Insertion Short,Tajinomimenh,5000,0.000353,4999
+Insertion Short,Anapodh,100,0.000276,4950
+Insertion Short,Anapodh,500,0.006997,124750
+Insertion Short,Anapodh,1000,0.029223,499500
+Insertion Short,Anapodh,2000,0.118125,1999000
+Insertion Short,Anapodh,5000,0.797839,12497500
+Insertion Short,Tyxaia,100,0.000147,2587
+Insertion Short,Tyxaia,500,0.003724,62614
+Insertion Short,Tyxaia,1000,0.016067,252120
+Insertion Short,Tyxaia,2000,0.066020,1010769
+Insertion Short,Tyxaia,5000,0.398565,6236195
+Insertion Short,Ligotera Decents,100,0.000007,109
+Insertion Short,Ligotera Decents,500,0.000052,799
+Insertion Short,Ligotera Decents,1000,0.000143,2224
+Insertion Short,Ligotera Decents,2000,0.000435,6949
+Insertion Short,Ligotera Decents,5000,0.002026,36124
+Insertion Short,Perissotera Decents,100,0.000248,4470
+Insertion Short,Perissotera Decents,500,0.006389,112600
+Insertion Short,Perissotera Decents,1000,0.026305,450825
+Insertion Short,Perissotera Decents,2000,0.108390,1804150
+Insertion Short,Perissotera Decents,5000,0.700688,11279125
+Insertion Short,Ligotera Inversions,100,0.000020,344
+Insertion Short,Ligotera Inversions,500,0.000406,6724
+Insertion Short,Ligotera Inversions,1000,0.001566,25949
+Insertion Short,Ligotera Inversions,2000,0.006322,101899
+Insertion Short,Ligotera Inversions,5000,0.038677,629748
+Insertion Short,Perissotera Inversions,100,0.000261,4724
+Insertion Short,Perissotera Inversions,500,0.006664,118624
+Insertion Short,Perissotera Inversions,1000,0.028056,474748
+Insertion Short,Perissotera Inversions,2000,0.115750,1899497
+Insertion Short,Perissotera Inversions,5000,0.740517,11873743
+Merge Short,Tajinomimenh,100,0.000073,316
+Merge Short,Tajinomimenh,500,0.000423,2216
+Merge Short,Tajinomimenh,1000,0.000894,4932
+Merge Short,Tajinomimenh,2000,0.001890,10864
+Merge Short,Tajinomimenh,5000,0.005065,29804
+Merge Short,Anapodh,100,0.000073,356
+Merge Short,Anapodh,500,0.000434,2272
+Merge Short,Anapodh,1000,0.000877,5044
+Merge Short,Anapodh,2000,0.001939,11088
+Merge Short,Anapodh,5000,0.005384,32004
+Merge Short,Tyxaia,100,0.000097,541
+Merge Short,Tyxaia,500,0.000590,3844
+Merge Short,Tyxaia,1000,0.001344,8708
+Merge Short,Tyxaia,2000,0.002950,19403
+Merge Short,Tyxaia,5000,0.008362,55249
+Merge Short,Ligotera Decents,100,0.000064,318
+Merge Short,Ligotera Decents,500,0.000403,2234
+Merge Short,Ligotera Decents,1000,0.000873,4965
+Merge Short,Ligotera Decents,2000,0.001928,10923
+Merge Short,Ligotera Decents,5000,0.005062,30035
+Merge Short,Perissotera Decents,100,0.000081,428
+Merge Short,Perissotera Decents,500,0.000461,2644
+Merge Short,Perissotera Decents,1000,0.000960,5786
+Merge Short,Perissotera Decents,2000,0.002139,12564
+Merge Short,Perissotera Decents,5000,0.005698,35609
+Merge Short,Ligotera Inversions,100,0.000075,403
+Merge Short,Ligotera Inversions,500,0.000472,2707
+Merge Short,Ligotera Inversions,1000,0.000975,6078
+Merge Short,Ligotera Inversions,2000,0.002069,12783
+Merge Short,Ligotera Inversions,5000,0.005517,34454
+Merge Short,Perissotera Inversions,100,0.000074,366
+Merge Short,Perissotera Inversions,500,0.000435,2358
+Merge Short,Perissotera Inversions,1000,0.000924,5162
+Merge Short,Perissotera Inversions,2000,0.001928,11497
+Merge Short,Perissotera Inversions,5000,0.005279,32236

@@ -1,6 +1,6 @@
 import time
 import random 
-
+import matplotlib.pyplot as plt
 def Decenterios(Pinakas):
     Metritakos = 0
     for i in range(len(Pinakas) - 1):
@@ -245,14 +245,12 @@ def PeiramatoTrexths():
     return Apotelesmata
 import csv
 
-def ExportToCSV(Apotelesmata, filename="results.csv"):
+def DimiourgosCSV(Apotelesmata, filename="results.csv"):
     with open(filename, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         
-        # Header row
         writer.writerow(["Algorithm", "Input Type", "n", "Avg Time (s)", "Avg Comparisons"])
-        
-        # Data rows
+
         for OnomaAlgorithmou in Apotelesmata:
             for OnomaEisodou in Apotelesmata[OnomaAlgorithmou]:
                 for n in Apotelesmata[OnomaAlgorithmou][OnomaEisodou]:
@@ -262,10 +260,87 @@ def ExportToCSV(Apotelesmata, filename="results.csv"):
     
     print(f"Results exported to {filename}")
 
-if __name__ == "__main__":
-    print(f"Sizes: {MegethiPinaka}")
-    print(f"Repeats per experiment: {Epanalipseis}")
+def DimiourgosGraphimatosChronou(Apotelesmata):
+    plt.figure(figsize=(10, 6))
+    
+    for OnomaAlgorithmou in Apotelesmata:
+        for OnomaEisodou in Apotelesmata[OnomaAlgorithmou]:
+            Times = []
+            for n in MegethiPinaka:
+                MesosChronos, _ = Apotelesmata[OnomaAlgorithmou][OnomaEisodou][n]
+                Times.append(MesosChronos)
+            plt.plot(MegethiPinaka, Times, marker="o", label=f"{OnomaAlgorithmou} - {OnomaEisodou}")
+    
+    plt.title("Χρόνος Εκτέλεσης ως προς n")
+    plt.xlabel("n (μέγεθος εισόδου)")
+    plt.ylabel("Μέσος Χρόνος (s)")
+    plt.legend(fontsize=7)
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig("time_vs_n.png", dpi=150)
+    plt.show()
+    print("Saved: time_vs_n.png")
 
-    Apotelesmata = PeiramatoTrexths()
-    ExportToCSV(Apotelesmata)
-    print("Done!")
+
+def DiiourgosGraphimatosSygrisewn(Apotelesmata):
+    plt.figure(figsize=(10, 6))
+    
+    for OnomaAlgorithmou in Apotelesmata:
+        for OnomaEisodou in Apotelesmata[OnomaAlgorithmou]:
+            Comparisons = []
+            for n in MegethiPinaka:
+                _, MesesSygriseis = Apotelesmata[OnomaAlgorithmou][OnomaEisodou][n]
+                Comparisons.append(MesesSygriseis)
+            plt.plot(MegethiPinaka, Comparisons, marker="o", label=f"{OnomaAlgorithmou} - {OnomaEisodou}")
+    
+    plt.title("Συγκρίσεις ως προς n")
+    plt.xlabel("n (μέγεθος εισόδου)")
+    plt.ylabel("Μέσος Αριθμός Συγκρίσεων")
+    plt.legend(fontsize=7)
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig("comparisons_vs_n.png", dpi=150)
+    plt.show()
+    print("Saved: comparisons_vs_n.png")
+
+
+def DimiourgosGraphimatosSysxetisisDecents(Apotelesmata):
+    FixedN = 1000
+    
+    InputLabels = [OnomaEisodou for OnomaEisodou in Apotelesmata[list(Apotelesmata.keys())[0]]]
+    x = range(len(InputLabels))
+    width = 0.25
+
+    plt.figure(figsize=(12, 6))
+    
+    for idx, OnomaAlgorithmou in enumerate(Apotelesmata):
+        Times = []
+        for OnomaEisodou in Apotelesmata[OnomaAlgorithmou]:
+            MesosChronos, _ = Apotelesmata[OnomaAlgorithmou][OnomaEisodou][FixedN]
+            Times.append(MesosChronos)
+        plt.bar([i + idx * width for i in x], Times, width=width, label=OnomaAlgorithmou)
+    
+    plt.title(f"Επίδραση τύπου εισόδου στην απόδοση (n={FixedN})")
+    plt.xlabel("Τύπος Εισόδου")
+    plt.ylabel("Μέσος Χρόνος (s)")
+    plt.xticks([i + width for i in x], InputLabels, rotation=15, ha="right")
+    plt.legend()
+    plt.grid(True, axis="y")
+    plt.tight_layout()
+    plt.savefig("descents_effect.png", dpi=150)
+    plt.show()
+    print("Saved: descents_effect.png")
+    
+if __name__ == "__main__":
+        
+        print(f"Sizes: {MegethiPinaka}")
+        print(f"Repeats per experiment: {Epanalipseis}")
+
+        Apotelesmata = PeiramatoTrexths()
+        DimiourgosCSV(Apotelesmata)
+    
+        print("\nGenerating plots...")
+        DimiourgosGraphimatosChronou(Apotelesmata)
+        DiiourgosGraphimatosSygrisewn(Apotelesmata)
+        DimiourgosGraphimatosSysxetisisDecents(Apotelesmata)
+        print("All plots saved!")
