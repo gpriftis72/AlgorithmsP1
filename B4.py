@@ -8,9 +8,9 @@ def DhmiourgeasDececntsOMegas(n, k):
     if k == n - 1:
         return list(range(n, 0, -1))
 
-    arr = list(range(1, n + 1))
-    arr[:k + 1] = arr[:k + 1][::-1]
-    return arr
+    Pinakas = list(range(1, n + 1))
+    Pinakas[:k + 1] = Pinakas[:k + 1][::-1]
+    return Pinakas
 
 
 def DhmiourgeasInversionsOPioMegas(n, k):
