@@ -1,0 +1,9 @@
+https://www.geeksforgeeks.org/python/python-program-for-bubble-sort/
+https://www.youtube.com/watch?v=Dv4qLJcxus8&themeRefresh=1
+https://www.w3schools.com/Python/python_dsa_insertionsort.asp
+https://www.geeksforgeeks.org/python/python-program-for-merge-sort/
+https://stackoverflow.com/questions/3345336/save-results-to-csv-file-with-python
+https://www.geeksforgeeks.org/python/graph-plotting-in-python-set-1/
+https://www.geeksforgeeks.org/dsa/dijkstras-shortest-path-algorithm-greedy-algo-7/
+https://www.geeksforgeeks.org/dsa/bellman-ford-algorithm-dp-23/
+Cormen,Leiserson,Rivest,Stein "Εισαγωγή στους Αλγορίθμους", 4η Έκδοση ,Πανεπιστημιακές Εκδόσεις Κρήτης
