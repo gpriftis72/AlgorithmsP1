@@ -62,13 +62,13 @@ def bellman_ford(vertices, edges, source):
         if not updated:
             break
 
-    neg_cycle = False
+    ArnhtikosKyklos = False
     for (u, v), w in edge_list:
         if dist[u] != float('inf') and dist[u] + w < dist[v]:
-            neg_cycle = True
+            ArnhtikosKyklos = True
             break
 
-    return dist, neg_cycle
+    return dist, ArnhtikosKyklos
 
 def ArnhtikesAkres(edges):
     return any(w < 0 for w in edges.values())
@@ -97,24 +97,28 @@ def SygkekrimenoStigmiotypoTypeSheet():
     for u, v, w in neg:
         print(f"  {u} -> {v}: {w:+d}")
 
-    dijk = dijkstra(VERTICES, SPECIFIC_EDGES, SOURCE)
-    bf, neg_cycle = bellman_ford(VERTICES, SPECIFIC_EDGES, SOURCE)
+    bf, ArnhtikosKyklos = bellman_ford(VERTICES, SPECIFIC_EDGES, SOURCE)
 
-    print(f"\nYparxei arnhtikos kyklos ? {'Nai yparxei' if neg_cycle else 'Oxi Dystyxws'}")
+    print(f"\nYparxei arnhtikos kyklos ? {'Nai yparxei' if ArnhtikosKyklos else 'Oxi Dystyxws'}")
+
+    print("\n O Bellman-Ford gia s:")
+    for v in VERTICES:
+        val = bf[v] if bf[v] != float('inf') else '∞'
+        print(f"  dist[{v}] = {val}")
+
+    if ArnhtikosKyklos or ArnhtikesAkres(SPECIFIC_EDGES):
+        return
+
+    dijk = dijkstra(VERTICES, SPECIFIC_EDGES, SOURCE)
 
     print("\n O Dijkstra gia s:")
     for v in VERTICES:
         print(f"  dist[{v}] = {dijk[v]}")
 
-    print("\ O Bellman-Ford gia s:")
-    for v in VERTICES:
-        val = bf[v] if bf[v] != float('inf') else '∞'
-        print(f"  dist[{v}] = {val}")
-
     correct = dists_equal(dijk, bf, VERTICES)
     print(f"\nΔijkstra == Bellman-Ford: {'Nai einai!' if correct else 'Dystyxws oxi, tha mporouse alla telika den mporei'}")
 
-def Prosomoioths(AritmosDokimwn=10_000, seed=35):
+def Prosomoioths(AritmosDokimwn=10_000, seed=43):
     random.seed(seed)
 
     total = AritmosDokimwn
@@ -129,24 +133,23 @@ def Prosomoioths(AritmosDokimwn=10_000, seed=35):
         edges = GraphoDimiourgosOTyxaios()
 
         neg_edges          = ArnhtikesAkres(edges)
-        bf_dist, neg_cycle = bellman_ford(VERTICES, edges, SOURCE)
-        dijk_dist          = dijkstra(VERTICES, edges, SOURCE)
+        bf_dist, ArnhtikosKyklos = bellman_ford(VERTICES, edges, SOURCE)
 
         if neg_edges:
             MetrhthsIOiArnhtikesAkmes += 1
-        if neg_cycle:
+        if ArnhtikosKyklos:
             MetrhthsIIOiArnhtikoiKykloi += 1
 
-        if not neg_cycle:
-            correct = dists_equal(dijk_dist, bf_dist, VERTICES)
-            if correct:
-                MetrhthsIIIOSwstos += 1
-                if neg_edges:
-                    MetrhthsVOSwstosArnhtikos += 1
+        if not ArnhtikosKyklos:
+            if not neg_edges:
+                dijk_dist = dijkstra(VERTICES, edges, SOURCE)
+                correct = dists_equal(dijk_dist, bf_dist, VERTICES)
+                if correct:
+                    MetrhthsIIIOSwstos += 1
+                else:
+                    MetrhthsIVOLathos += 1
             else:
-                MetrhthsIVOLathos += 1
-                if neg_edges:
-                    MetrhthsVIOLathosArnhtikos += 1
+                MetrhthsVIOLathosArnhtikos += 1
 
     no_cycle = total - MetrhthsIIOiArnhtikoiKykloi
     with_neg_no_cycle = MetrhthsVOSwstosArnhtikos + MetrhthsVIOLathosArnhtikos
@@ -165,12 +168,10 @@ def Prosomoioths(AritmosDokimwn=10_000, seed=35):
         print(f"  O Dijkstra htan lathos    : {MetrhthsIVOLathos:6,}  fores"
               f"({100*MetrhthsIVOLathos/no_cycle:.1f}%)")
 
-    print(f"\nGia tous graphous me arnhtikes akmes kai xwris aenhtiko kyklo pou einai : "
+    print(f"\nGia tous graphous me arnhtikes akmes kai xwris arnhtiko kyklo pou einai : "
           f"{with_neg_no_cycle:,}")
     if with_neg_no_cycle:
-        print(f"  O Dijkstra htan swstos         : {MetrhthsVOSwstosArnhtikos:6,}  "
-              f"({100*MetrhthsVOSwstosArnhtikos/with_neg_no_cycle:.1f}%)")
-        print(f"  O Dijkstra htan lathos    : {MetrhthsVIOLathosArnhtikos:6,}  "
+        print(f"  O Dijkstra den etrexe (skipped)) : {MetrhthsVIOLathosArnhtikos:6,}  "
               f"({100*MetrhthsVIOLathosArnhtikos/with_neg_no_cycle:.1f}%)")
 
 
