@@ -261,76 +261,76 @@ def DimiourgosCSV(Apotelesmata, filename="results.csv"):
     print(f"Results exported to {filename}")
 
 def DimiourgosGraphimatosChronou(Apotelesmata):
-    plt.figure(figsize=(10, 6))
-    
     for OnomaAlgorithmou in Apotelesmata:
+        plt.figure(figsize=(10, 6))
+        
         for OnomaEisodou in Apotelesmata[OnomaAlgorithmou]:
             Times = []
             for n in MegethiPinaka:
                 MesosChronos, _ = Apotelesmata[OnomaAlgorithmou][OnomaEisodou][n]
                 Times.append(MesosChronos)
-            plt.plot(MegethiPinaka, Times, marker="o", label=f"{OnomaAlgorithmou} - {OnomaEisodou}")
-    
-    plt.title("Χρόνος Εκτέλεσης ως προς n")
-    plt.xlabel("n (μέγεθος εισόδου)")
-    plt.ylabel("Μέσος Χρόνος (s)")
-    plt.legend(fontsize=7)
-    plt.grid(True)
-    plt.tight_layout()
-    plt.savefig("time_vs_n.png", dpi=150)
-    plt.show()
-    print("Saved: time_vs_n.png")
+            plt.plot(MegethiPinaka, Times, marker="o", label=OnomaEisodou)
+        
+        plt.title(f"Χρόνος Εκτέλεσης ως προς n — {OnomaAlgorithmou}")
+        plt.xlabel("n (μέγεθος εισόδου)")
+        plt.ylabel("Μέσος Χρόνος (s)")
+        plt.legend(fontsize=9)
+        plt.grid(True)
+        plt.tight_layout()
+        filename = f"time_vs_n_{OnomaAlgorithmou.replace(' ', '_')}.png"
+        plt.savefig(filename, dpi=150)
+        plt.show()
+        print(f"Saved: {filename}")
 
 
 def DiiourgosGraphimatosSygrisewn(Apotelesmata):
-    plt.figure(figsize=(10, 6))
-    
     for OnomaAlgorithmou in Apotelesmata:
+        plt.figure(figsize=(10, 6))
+        
         for OnomaEisodou in Apotelesmata[OnomaAlgorithmou]:
             Comparisons = []
             for n in MegethiPinaka:
                 _, MesesSygriseis = Apotelesmata[OnomaAlgorithmou][OnomaEisodou][n]
                 Comparisons.append(MesesSygriseis)
-            plt.plot(MegethiPinaka, Comparisons, marker="o", label=f"{OnomaAlgorithmou} - {OnomaEisodou}")
-    
-    plt.title("Συγκρίσεις ως προς n")
-    plt.xlabel("n (μέγεθος εισόδου)")
-    plt.ylabel("Μέσος Αριθμός Συγκρίσεων")
-    plt.legend(fontsize=7)
-    plt.grid(True)
-    plt.tight_layout()
-    plt.savefig("comparisons_vs_n.png", dpi=150)
-    plt.show()
-    print("Saved: comparisons_vs_n.png")
+            plt.plot(MegethiPinaka, Comparisons, marker="o", label=OnomaEisodou)
+        
+        plt.title(f"Συγκρίσεις ως προς n — {OnomaAlgorithmou}")
+        plt.xlabel("n (μέγεθος εισόδου)")
+        plt.ylabel("Μέσος Αριθμός Συγκρίσεων")
+        plt.legend(fontsize=9)
+        plt.grid(True)
+        plt.tight_layout()
+        filename = f"comparisons_vs_n_{OnomaAlgorithmou.replace(' ', '_')}.png"
+        plt.savefig(filename, dpi=150)
+        plt.show()
+        print(f"Saved: {filename}")
 
 
 def DimiourgosGraphimatosSysxetisisDecents(Apotelesmata):
     FixedN = 1000
-    
-    InputLabels = [OnomaEisodou for OnomaEisodou in Apotelesmata[list(Apotelesmata.keys())[0]]]
-    x = range(len(InputLabels))
-    width = 0.25
 
-    plt.figure(figsize=(12, 6))
-    
-    for idx, OnomaAlgorithmou in enumerate(Apotelesmata):
+    InputLabels = list(Apotelesmata[list(Apotelesmata.keys())[0]].keys())
+    x = range(len(InputLabels))
+
+    for OnomaAlgorithmou in Apotelesmata:
+        plt.figure(figsize=(12, 6))
+
         Times = []
         for OnomaEisodou in Apotelesmata[OnomaAlgorithmou]:
             MesosChronos, _ = Apotelesmata[OnomaAlgorithmou][OnomaEisodou][FixedN]
             Times.append(MesosChronos)
-        plt.bar([i + idx * width for i in x], Times, width=width, label=OnomaAlgorithmou)
-    
-    plt.title(f"Επίδραση τύπου εισόδου στην απόδοση (n={FixedN})")
-    plt.xlabel("Τύπος Εισόδου")
-    plt.ylabel("Μέσος Χρόνος (s)")
-    plt.xticks([i + width for i in x], InputLabels, rotation=15, ha="right")
-    plt.legend()
-    plt.grid(True, axis="y")
-    plt.tight_layout()
-    plt.savefig("descents_effect.png", dpi=150)
-    plt.show()
-    print("Saved: descents_effect.png")
-    
+
+        plt.bar(x, Times, color="steelblue", edgecolor="white")
+        plt.title(f"Επίδραση τύπου εισόδου — {OnomaAlgorithmou} (n={FixedN})")
+        plt.xlabel("Τύπος Εισόδου")
+        plt.ylabel("Μέσος Χρόνος (s)")
+        plt.xticks(x, InputLabels, rotation=15, ha="right")
+        plt.grid(True, axis="y")
+        plt.tight_layout()
+        filename = f"descents_effect_{OnomaAlgorithmou.replace(' ', '_')}.png"
+        plt.savefig(filename, dpi=150)
+        plt.show()
+        print(f"Saved: {filename}")
 if __name__ == "__main__":
         
         print(f"Sizes: {MegethiPinaka}")
